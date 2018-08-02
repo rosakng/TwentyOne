@@ -21,11 +21,57 @@
 
 #card-1 {
 	top: 120px;
-	border-radius: 25px;
+	
 }
+
 #card-2 {
+	top: 120px;
+	
+}
+
+#card-3 {
+	top: 120px;
+	
+}
+
+#card-4 {
+	top: 120px;
+	
+}
+
+#card-5 {
+	top: 120px;
+	
+}
+
+#card-6 {
+	top: 120px;
+	
+}
+
+#card-7 {
+	top: 120px;
+	
+}
+
+#card-8 {
+	top: 120px;
+	
+}
+
+#card-9 {
+	top: 120px;
+	
+}
+
+#card-10 {
+	top: 120px;
+	
+}
+
+#card-back {
 	top: 250px;
-	border-radius: 25px;
+	
 }
 
 * {
@@ -175,7 +221,7 @@ i {
     left: 50%;
     top: 178px;
     transform: translate(-50%, 0);
-    height: 140px;
+    height: 70px;
     box-shadow: 0px 10px 60px rgba(0, 0, 0, 0.10);
 }
 
