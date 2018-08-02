@@ -1,0 +1,9 @@
+// TwentyOne Game 
+
+Add textbox or buttons at the bottom of each player panel that gives the option of picking 1 or 11 only when ace is picked
+
+Take out current scores
+
+Layout the cards better - ie click so that it shows the card that is turned over, then click hit and add both cards. 
+
+Calculate max amount of cards needed and format cards 
