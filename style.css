@@ -10,6 +10,7 @@
     color:#555;
     font-size: 18px;
     font-family: 'Poiret One', cursive;
+	font-weight: 500;
     text-align: center;
     padding: 10px;
     width: 160px;
@@ -121,8 +122,10 @@ body {
 .player-current-label {
     text-transform: uppercase;
     margin-bottom: 10px;
-    font-size: 12px;
+    font-size: 15px;
     color: #fff;
+	font-weight: 550;
+	
 }
 
 .player-current-score {
@@ -141,7 +144,7 @@ button {
     font-size: 20px;
     text-transform: uppercase;
     cursor: pointer;
-    font-weight: 300;
+    font-weight: 400;
     transition: background-color 0.3s, color 0.3s;
 }
 
@@ -164,7 +167,7 @@ i {
 }
 
 .btn-new { top: 45px;}
-.btn-roll { top: 403px;}
+.btn-hit { top: 403px;}
 .btn-hold { top: 467px;}
 
 .card {

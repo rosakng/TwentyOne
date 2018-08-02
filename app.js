@@ -26,7 +26,7 @@ init ();
 /*
 document.getElementById('score-0').textContent = '0'
 document.getElementById('score-1').textContent = '0'
-document.getElementById('current-0').textContent = '0'
+document.getElementById('current-0').textContent = '0'tn
 document.getElementById('current-1').textContent = '0'
 */
 
@@ -36,12 +36,12 @@ function btn() {
 }
 btn();
 
-document.querySelector('.btn-roll').addEventListener('click', btn);
+document.querySelector('.btn-hit').addEventListener('click', btn);
 //btn is the callback function because it is passed into another function (event listener) to call for us
 */
 
 //or we can use anonymous function 
-document.querySelector('.btn-roll').addEventListener('click', function() {
+document.querySelector('.btn-hit').addEventListener('click', function() {
     if (gamePlaying){
         //1.Random number 
         var card = Math.floor(Math.random() * 13) + 1;
@@ -51,7 +51,7 @@ document.querySelector('.btn-roll').addEventListener('click', function() {
         cardDOM.style.display = 'block';
         cardDOM.src = 'card-' + card + '.jpg';
     
-        //3.Update the round score iF the rolled number is NOT a 1 
+        //3.Update the round score iF the card is NOT a 1 
     
         if (card !== 1) {
             //add score
