@@ -2,75 +2,85 @@
 *** GENERAL
 **********************************************/
 
-.option {
+input {
     position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    top: 520px;
+    top: 460px;
     color:#555;
     font-size: 18px;
     font-family: 'Poiret One', cursive;
 	font-weight: 500;
     text-align: center;
     padding: 10px;
-    width: 160px;
+    width: 170px;
     text-transform: uppercase;
+    transform: translateX(37%);
 }
 
-.option:focus { outline: none; }
+.player-current-option :focus { 
+    outline: none; 
+}
 
 #card-1 {
 	top: 120px;
+    left: 420px;
 	
 }
 
 #card-2 {
 	top: 120px;
+    left: 460px;
 	
 }
 
 #card-3 {
 	top: 120px;
+    left: 500px;
 	
 }
 
 #card-4 {
 	top: 120px;
+    left: 540px;
 	
 }
 
 #card-5 {
 	top: 120px;
+    left: 580px;
 	
 }
 
 #card-6 {
-	top: 120px;
-	
+	top: 210px;
+	left: 420px;
 }
 
 #card-7 {
-	top: 120px;
+	top: 210px;
+    left: 460px;
 	
 }
 
 #card-8 {
-	top: 120px;
+	top: 210px;
+    left: 500px;
 	
 }
 
 #card-9 {
-	top: 120px;
+	top: 210px;
+    left: 540px;
 	
 }
 
 #card-10 {
-	top: 120px;
+	top: 210px;
+    left: 580px;
 	
 }
 
 #card-back {
-	top: 250px;
+	top: 300px;
 	
 }
 
@@ -151,31 +161,34 @@ body {
     position: absolute;
     color: #cf6a87;
     top: -43px;
-    right: 20px;
+    right: 30px;
     
 }
 
 .player-current-box {
     background-color: #cf6a87;
     color: #fff;
-    width: 40%;
+    width: 70%;
+    height: 40%;
     margin: 0 auto;
     padding: 12px;
     text-align: center;
+    transform: translateY(30%);
 	border-radius: 20px
+    
 }
 
 .player-current-label {
     text-transform: uppercase;
     margin-bottom: 10px;
-    font-size: 15px;
+    font-size: 25px;
     color: #fff;
 	font-weight: 550;
 	
 }
 
 .player-current-score {
-    font-size: 30px;
+    font-size: 70px;
 }
 
 button {
@@ -213,8 +226,10 @@ i {
 }
 
 .btn-new { top: 45px;}
-.btn-hit { top: 403px;}
-.btn-hold { top: 467px;}
+.btn-flip { top: 400px;}
+.btn-hit { top: 445px;}
+.btn-hold { top: 490px;}
+
 
 .card {
     position: absolute;
