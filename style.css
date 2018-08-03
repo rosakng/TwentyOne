@@ -16,8 +16,43 @@ input {
     transform: translateX(37%);
 }
 
-.player-current-option :focus { 
+.player-current-option-1 {
+    background-color: #cf6a87;
+    color: #fff;
+    width: 30%;
+    height: 10%;
+    margin: 0 auto;
+    padding: 12px;
+    text-align: center;
+    transform: translate(-65%,200%);
+	border-radius: 10px;
+}
+.player-current-option-11 {
+    background-color: #cf6a87;
+    color: #fff;
+    width: 30%;
+    height: 10%;
+    margin: 0 auto;
+    padding: 12px;
+    text-align: center;
+    transform: translate(67%,100%);
+	border-radius: 10px;
+}
+
+.player-current-option-1, .player-current-option-2 :focus { 
     outline: none; 
+}
+
+.one {
+    font-size: 20px;
+    color: #fff;
+    transform: translate(-51%, -15%);
+}
+
+.eleven {
+    font-size: 20px;
+    color: #fff;
+    transform: translate(-50%, -15%);
 }
 
 #card-1 {
@@ -209,7 +244,7 @@ button {
     transition: background-color 0.3s, color 0.3s;
 }
 
-button:hover { font-weight: 600; }
+button:hover { font-weight: 650; }
 button:hover i { margin-right: 20px; }
 
 button:focus {

@@ -59,8 +59,14 @@ document.querySelector('.btn-hit').addEventListener('click', function() {
   hitClicks += 1; 
         //document.getElementById('current-' + activePlayer).textContent = roundScore;
         //roundScore += backCardNum;
-    
+   
     if (gamePlaying){
+        
+        /*
+        if (hitClicks > 13){
+            disableHit();
+        }
+        */
 
         //1.Random number 
         var cardNum = Math.floor(Math.random() * 13) + 1;
@@ -72,17 +78,19 @@ document.querySelector('.btn-hit').addEventListener('click', function() {
         
         
         //3.Update the round score iF the card is NOT a 1 
-    
         if (cardNum !== 1) {
             //add score
             document.getElementById('current-' + activePlayer).textContent = roundScore;
-            roundScore += cardNum + backCardNum; //we can do this because roundScore is a global variable
+            roundScore += cardNum; //we can do this because roundScore is a global variable
             
+        }
+        if (cardNum == 1) {
+            var option = document.getElementById('option-' + activePlayer).in;
         }
         
         else {
             //next player
-            nextPlayer();
+            //nextPlayer();
             
             
             //option of choosing for a 1 or 11
