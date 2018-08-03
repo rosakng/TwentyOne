@@ -57,61 +57,46 @@ var hitClicks = 0;
 document.querySelector('.btn-hit').addEventListener('click', function() {
     
   hitClicks += 1; 
-        //document.getElementById('current-' + activePlayer).textContent = roundScore;
-        //roundScore += backCardNum;
-   
-    if (gamePlaying){
-        
-        /*
-        if (hitClicks > 13){
-            disableHit();
-        }
-        */
 
-        //1.Random number 
-        var cardNum = Math.floor(Math.random() * 13) + 1;
-    
-        //2.Display the result
+    // Random number 
+    var cardNum = Math.floor(Math.random() * 13) + 1;
+   
+    if (gamePlaying && cardNum !== 1){
+        
+        // Display the result
+        var cardDOM = document.getElementById('card-'+hitClicks);
+        cardDOM.style.display = 'block';
+        cardDOM.src = 'card-' + cardNum + '.jpg';
+        roundScore += cardNum;
+        document.getElementById('current-' + activePlayer).textContent = roundScore;
+        
+    }
+    else if (cardNum == 1) {
         var cardDOM = document.getElementById('card-'+hitClicks);
         cardDOM.style.display = 'block';
         cardDOM.src = 'card-' + cardNum + '.jpg';
         
-        
-        //3.Update the round score iF the card is NOT a 1 
-        if (cardNum !== 1) {
-            //add score
-            document.getElementById('current-' + activePlayer).textContent = roundScore;
-            roundScore += cardNum; //we can do this because roundScore is a global variable
-            
+            document.getElementById('one-' + activePlayer).addEventListener('click', function() {
+                var one = 1;
+                roundScore += one;
+            });
+            document.getElementById('eleven-' + activePlayer).addEventListener('click', function() {
+               var eleven = 2;
+                roundScore += eleven;
+            });
+                
         }
-        if (cardNum == 1) {
-            var option = document.getElementById('option-' + activePlayer).in;
-        }
-        
-        else {
-            //next player
-            //nextPlayer();
-            
-            
-            //option of choosing for a 1 or 11
-            
-        }
-
-    }
 });
+
+function option () {
+    
+};
 
 document.querySelector('.btn-hold').addEventListener('click',function() {
     
     if (gamePlaying){
-        
-        //add CURRENT score to GLOBAL score 
-        scores[activePlayer] += roundScore;
-    
-        //update the UI 
-        document.querySelector('#score-' + activePlayer).textContent = scores[activePlayer];
-    
         //check if the player won the game 
-        if (scores[activePlayer] === 21) {
+        if (roundScore === 21) {
             document.querySelector('#name-'+activePlayer).textContent = 'Winner!';
             document.querySelector('.card').style.display = 'none';
             document.querySelector('.player-' + activePlayer + '-panel').classList.add('winner');
@@ -119,7 +104,7 @@ document.querySelector('.btn-hold').addEventListener('click',function() {
             gamePlaying = false;
         }
         
-        else if (scores[activePlayer] > 21 || roundScore > 21){
+        else if (roundScore > 21){
             document.querySelector('#name-'+activePlayer).textContent = 'Loser!';
             document.querySelector('.card').style.display = 'none';
             document.querySelector('.player-' + activePlayer + '-panel').classList.add('loser');
