@@ -1,5 +1,6 @@
-var scores, roundScore, activePlayer, gamePlaying;
+var roundScore, activePlayer, gamePlaying, num, backCardNum;
 
+num = 13;
 /*
 scores = [0,0];
 roundScore = 0;
@@ -7,6 +8,13 @@ activePlayer = 0; //change this to 0 or 1
 */
 
 init ();
+
+function disableFlip () {
+    document.querySelector('.btn-flip').disabled = true;
+}
+function disableHit () {
+    document.querySelector('.btn-hit').disabled = true;
+}
 
 
 //setter
@@ -41,23 +49,37 @@ document.querySelector('.btn-hit').addEventListener('click', btn);
 */
 
 //or we can use anonymous function 
+
+
+
+
+var hitClicks = 0; 
 document.querySelector('.btn-hit').addEventListener('click', function() {
+    
+  hitClicks += 1; 
+        //document.getElementById('current-' + activePlayer).textContent = roundScore;
+        //roundScore += backCardNum;
+    
     if (gamePlaying){
+
         //1.Random number 
-        var card = Math.floor(Math.random() * 13) + 1;
+        var cardNum = Math.floor(Math.random() * 13) + 1;
     
         //2.Display the result
-        var cardDOM = document.querySelector('.card');
+        var cardDOM = document.getElementById('card-'+hitClicks);
         cardDOM.style.display = 'block';
-        cardDOM.src = 'card-' + card + '.jpg';
-    
+        cardDOM.src = 'card-' + cardNum + '.jpg';
+        
+        
         //3.Update the round score iF the card is NOT a 1 
     
-        if (card !== 1) {
+        if (cardNum !== 1) {
             //add score
-            roundScore += card; //we can do this because roundScore is a global variable
-            document.querySelector('#current-' + activePlayer).textContent = roundScore;
+            document.getElementById('current-' + activePlayer).textContent = roundScore;
+            roundScore += cardNum + backCardNum; //we can do this because roundScore is a global variable
+            
         }
+        
         else {
             //next player
             nextPlayer();
@@ -66,6 +88,7 @@ document.querySelector('.btn-hit').addEventListener('click', function() {
             //option of choosing for a 1 or 11
             
         }
+
     }
 });
 
@@ -124,17 +147,28 @@ function nextPlayer() {
 
 document.querySelector('.btn-new').addEventListener('click', init);
     
+
+
 function init () {
         
-    scores = [0,0];
     activePlayer = 0;
     roundScore = 0;
     gamePlaying = true; 
-        
-    document.querySelector('.card').style.display = 'none';
     
-    document.getElementById('score-0').textContent = '0'
-    document.getElementById('score-1').textContent = '0'
+    
+    document.getElementById('card-1').style.display = 'none';
+    document.getElementById('card-2').style.display = 'none';
+    document.getElementById('card-3').style.display = 'none';
+    document.getElementById('card-4').style.display = 'none';
+    document.getElementById('card-5').style.display = 'none';
+    document.getElementById('card-6').style.display = 'none';
+    document.getElementById('card-7').style.display = 'none';
+    document.getElementById('card-8').style.display = 'none';
+    document.getElementById('card-9').style.display = 'none';
+    document.getElementById('card-10').style.display = 'none';
+    
+    
+    
     document.getElementById('current-0').textContent = '0'
     document.getElementById('current-1').textContent = '0'
     document.getElementById('name-0').textContent = 'Player 1';
@@ -144,7 +178,38 @@ function init () {
     document.querySelector('.player-0-panel').classList.remove('active');
     document.querySelector('.player-1-panel').classList.remove('active');
     document.querySelector('.player-0-panel').classList.add('active');
-
+    
+    /*
+    document.querySelector('.btn-flip').addEventListener('click', function() {
+   
+    // get random number
+    var backCardNum = Math.floor(Math.random() * 13) + 1;
+    
+    
+    //display result on back card
+    var backCardDOM = document.getElementById('card-back');
+    backCardDOM.style.display = 'block';
+    backCardDOM.src = 'card-' + backCardNum + '.jpg';
+    return backCardNum;
+    
+    
+    document.querySelector('.btn-flip').disabled = true;
+    
+});
+*/
+    document.querySelector('.btn-flip').onclick = function () {
+        
+    var backCardNum = Math.floor(Math.random() * 13) + 1;
+    
+    
+    //display result on back card
+    var backCardDOM = document.getElementById('card-back');
+    backCardDOM.style.display = 'block';
+    backCardDOM.src = 'card-' + backCardNum + '.jpg';
+    disableFlip();
+    return backCardNum;
+        
+    };
 }
 
 
