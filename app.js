@@ -15,6 +15,15 @@ function disableFlip () {
 function disableHit () {
     document.querySelector('.btn-hit').disabled = true;
 }
+function disableHold () {
+    document.querySelector('.btn-hold').disabled = true;
+}
+function disableEleven () {
+    document.querySelector('.eleven').disabled = true;
+}
+function disableOne () {
+    document.querySelector('.one').disabled = true;
+}
 
 
 //setter
@@ -51,8 +60,6 @@ document.querySelector('.btn-hit').addEventListener('click', btn);
 //or we can use anonymous function 
 
 
-
-
 var hitClicks = 0; 
 document.querySelector('.btn-hit').addEventListener('click', function() {
     
@@ -76,21 +83,37 @@ document.querySelector('.btn-hit').addEventListener('click', function() {
         cardDOM.style.display = 'block';
         cardDOM.src = 'card-' + cardNum + '.jpg';
         
-            document.getElementById('one-' + activePlayer).addEventListener('click', function() {
-                var one = 1;
-                roundScore += one;
-            });
-            document.getElementById('eleven-' + activePlayer).addEventListener('click', function() {
-               var eleven = 2;
-                roundScore += eleven;
-            });
-                
+        document.getElementById('one-' + activePlayer).onclick = function () {
+            
+            add = 1;
+            roundScore += add;
+            document.getElementById('current-' + activePlayer).textContent = roundScore;
+            //must disable all other functions
+         
         }
+        document.getElementById('eleven-' + activePlayer).onclick = function () {
+            
+            add = 11;
+            roundScore += add;
+            document.getElementById('current-' + activePlayer).textContent = roundScore;   
+            //must disable all other functions
+        }
+    }
 });
 
 function option () {
     
+    document.getElementById('one-' + activePlayer).onclick = function () {
+        var add = 1;
+        return add;
+    }
+    document.getElementById('eleven-' + activePlayer).onclick = function () {
+        var add = 11;
+        return add;
+    }
 };
+
+
 
 document.querySelector('.btn-hold').addEventListener('click',function() {
     
@@ -199,6 +222,8 @@ function init () {
     var backCardDOM = document.getElementById('card-back');
     backCardDOM.style.display = 'block';
     backCardDOM.src = 'card-' + backCardNum + '.jpg';
+    roundScore += backCardNum;
+    document.getElementById('current-' + activePlayer).textContent = roundScore;
     disableFlip();
     return backCardNum;
         
