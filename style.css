@@ -100,9 +100,14 @@
 	
 }
 
-#card-back {
+#card-back-0 {
 	top: 300px;
-	
+    left: 46%;
+}
+
+#card-back-1 {
+	top: 300px;
+    left: 54%;
 }
 
 * {
@@ -254,7 +259,7 @@ i {
 .btn-hold { top: 490px;}
 
 
-.card {
+.card, .backCard {
     position: absolute;
     left: 50%;
     top: 178px;

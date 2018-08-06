@@ -131,8 +131,8 @@ function nextPlayer() {
     activePlayer === 0 ? activePlayer = 1 : activePlayer = 0;
     //roundScore = 0;
         
-    document.getElementById('current-0').textContent = '0';
-    document.getElementById('current-1').textContent = '0';
+    //document.getElementById('current-0').textContent = '0';
+    //document.getElementById('current-1').textContent = '0';
         
     //switching active classes
     //document.querySelector('.player-0-panel').classList.remove('active');
@@ -186,7 +186,7 @@ function init () {
     
     
     //display result on back card
-    var backCardDOM = document.getElementById('card-back');
+    var backCardDOM = document.getElementById('card-back-' + activePlayer);
     backCardDOM.style.display = 'block';
     backCardDOM.src = 'card-' + backCardNum + '.jpg';
         
