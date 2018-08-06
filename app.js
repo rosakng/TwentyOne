@@ -131,8 +131,8 @@ function nextPlayer() {
     activePlayer === 0 ? activePlayer = 1 : activePlayer = 0;
     //roundScore = 0;
         
-    //document.getElementById('current-0').textContent = '0';
-    //document.getElementById('current-1').textContent = '0';
+    document.getElementById('current-0').textContent = '0';
+    document.getElementById('current-1').textContent = '0';
         
     //switching active classes
     //document.querySelector('.player-0-panel').classList.remove('active');
@@ -208,9 +208,10 @@ function init () {
     else {
         roundScore += backCardNum;
         document.getElementById('current-' + activePlayer).textContent = roundScore;
+        
     }
         
-    disableFlip();
+    //disableFlip();
     return backCardNum;
         
         
@@ -221,6 +222,7 @@ function init () {
 function addRoundScore () {
     roundScore += add;
     document.getElementById('current-' + activePlayer).textContent = roundScore; 
+    
 };
 
 
