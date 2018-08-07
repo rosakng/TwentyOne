@@ -143,7 +143,7 @@ function nextPlayer() {
     document.querySelector('.player-1-panel').classList.toggle('active'); 
         
     //making card disappear with a 1
-    querySelectorCards();
+    // -- turn off -- querySelectorCards();
 }
 
 document.querySelector('.btn-new').addEventListener('click', init);
@@ -195,20 +195,24 @@ function init () {
         document.getElementById('one-' + activePlayer).onclick = function () {
             add = 1;
             addRoundScore();
+            
             //must disable all other functions
          
         }
         document.getElementById('eleven-' + activePlayer).onclick = function () {
             add = 11;
             addRoundScore();
+            
               
             //must disable all other functions
         }
+        
     }
         
     else {
         roundScore += backCardNum;
         document.getElementById('current-' + activePlayer).textContent = roundScore;
+        
         
     }
         
