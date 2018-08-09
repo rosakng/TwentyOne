@@ -9,41 +9,24 @@ activePlayer = 0; //change this to 0 or 1
 
 init ();
 
-function disableFlip () {
-    document.querySelector('.btn-flip').disabled = true;
-}
-function disableHit () {
-    document.querySelector('.btn-hit').disabled = true;
-}
-function disableHold () {
-    document.querySelector('.btn-hold').disabled = true;
-}
-function disableEleven () {
-    document.querySelector('.eleven').disabled = true;
-}
-function disableOne () {
-    document.querySelector('.one').disabled = true;
+function disable (className) {
+    document.getElementsByClassName(className)[0].disabled = true;
 }
 
 function check () {
-    if (roundScore === 21) {
-        document.querySelector('#name-' + activePlayer).textContent = 'Winner!';
+    if (roundScore > 20) {
+        document.getElementById('name-' + activePlayer).textContent = roundScore === 21 ? 'Winner!' : 'Loser!';
         querySelectorCards();
-        document.querySelector('.player-' + activePlayer + '-panel').classList.add('winner');
-        document.querySelector('.player-' + activePlayer + '-panel').classList.remove('active');
+        document.getElementsByClassName(`player-${activePlayer}-panel`)[0].classList.add(roundScore === 21 ? 'winner' : 'loser');
+        document.getElementsByClassName(`player-${activePlayer}-panel`)[0].classList.remove('active');
         gamePlaying = false;
-    } else if (roundScore > 21) {
-        document.querySelector('#name-' + activePlayer).textContent = 'Loser!';
-        querySelectorCards();
-        document.querySelector('.player-' + activePlayer + '-panel').classList.add('loser');
-        document.querySelector('.player-' + activePlayer + '-panel').classList.remove('active');
-        gamePlaying = false;
+        return;
     }
 }
 
 
 let hitClicks = 0;
-document.querySelector('.btn-hit').addEventListener('click', function() {
+document.getElementsByClassName('btn-hit')[0].addEventListener('click', () => {
     hitClicks += 1;
 
     // Random number
@@ -53,25 +36,24 @@ document.querySelector('.btn-hit').addEventListener('click', function() {
         // Display the result
         const cardDOM = document.getElementById('card-' + hitClicks);
         cardDOM.style.display = 'block';
-        cardDOM.src = 'card-' + cardNum + '.jpg';
+        cardDOM.src = `card-${cardNum}.jpg`;
         roundScore += cardNum;
         document.getElementById('current-' + activePlayer).textContent = roundScore;
-
 
         check();
     } else if (cardNum === 1) {
         const cardDOM = document.getElementById('card-' + hitClicks);
         cardDOM.style.display = 'block';
-        cardDOM.src = 'card-' + cardNum + '.jpg';
+        cardDOM.src = `card-${cardNum}.jpg`;
 
-        document.getElementById('one-' + activePlayer).onclick = function() {
+        document.getElementById('one-' + activePlayer).onclick = () => {
             add = 1;
             addRoundScore();
             // must disable all other functions
 
             check();
         };
-        document.getElementById('eleven-' + activePlayer).onclick = function() {
+        document.getElementById('eleven-' + activePlayer).onclick = () => {
             add = 11;
             addRoundScore();
             // must disable all other functions
@@ -81,29 +63,16 @@ document.querySelector('.btn-hit').addEventListener('click', function() {
 });
 
 
-document.querySelector('.btn-hold').addEventListener('click', function() {
+document.getElementsByClassName('.btn-hold')[0].addEventListener('click', () => {
     if (gamePlaying) {
         // check if the player won the game
-        if (roundScore === 21) {
-            document.querySelector('#name-' + activePlayer).textContent = 'Winner!';
-            querySelectorCards();
-            document.querySelector('.player-' + activePlayer + '-panel').classList.add('winner');
-            document.querySelector('.player-' + activePlayer + '-panel').classList.remove('active');
-            gamePlaying = false;
-        } else if (roundScore > 21) {
-            document.querySelector('#name-' + activePlayer).textContent = 'Loser!';
-            querySelectorCards();
-            document.querySelector('.player-' + activePlayer + '-panel').classList.add('loser');
-            document.querySelector('.player-' + activePlayer + '-panel').classList.remove('active');
-            gamePlaying = false;
-        } else {
-            nextPlayer();
-        }
+        check();
+        nextPlayer();
     }
 });
 
 function querySelectorCards () {
-    const cards = document.querySelectorAll('.card');
+    const cards = document.getElementsByClassName('.card');
     for (let i = 0; i < cards.length; i++) {
         cards[i].style.display = 'none';
     }
@@ -113,7 +82,7 @@ function nextPlayer () {
     // next player
     // ternary operator
     roundScore = 0;
-    activePlayer === 0 ? activePlayer = 1 : activePlayer = 0;
+    activePlayer = activePlayer === 0 ? 1 : 0;
     // roundScore = 0;
 
     // document.getElementById('current-0').textContent = '0';
@@ -123,14 +92,14 @@ function nextPlayer () {
     // document.querySelector('.player-0-panel').classList.remove('active');
     // document.querySelector('.player-1-panel').classList.add('active');
 
-    document.querySelector('.player-0-panel').classList.toggle('active');
-    document.querySelector('.player-1-panel').classList.toggle('active');
+    document.getElementsByClassName('player-0-panel')[0].classList.toggle('active');
+    document.getElementsByClassName('player-1-panel')[0].classList.toggle('active');
 
     // making card disappear with a 1
     // -- turn off -- querySelectorCards();
 }
 
-document.querySelector('.btn-new').addEventListener('click', init);
+document.getElementsByClassName('btn-new')[0].addEventListener('click', init);
 
 
 function init () {
@@ -138,50 +107,39 @@ function init () {
     roundScore = 0;
     gamePlaying = true;
 
-
-    document.getElementById('card-1').style.display = 'none';
-    document.getElementById('card-2').style.display = 'none';
-    document.getElementById('card-3').style.display = 'none';
-    document.getElementById('card-4').style.display = 'none';
-    document.getElementById('card-5').style.display = 'none';
-    document.getElementById('card-6').style.display = 'none';
-    document.getElementById('card-7').style.display = 'none';
-    document.getElementById('card-8').style.display = 'none';
-    document.getElementById('card-9').style.display = 'none';
-    document.getElementById('card-10').style.display = 'none';
-
+    for (let i = 1; i < 11; i++) {
+        document.getElementById('card-' + i).style.display = 'none';
+    }
 
     document.getElementById('current-0').textContent = '0';
     document.getElementById('current-1').textContent = '0';
     document.getElementById('name-0').textContent = 'Player 1';
     document.getElementById('name-1').textContent = 'Player 2';
-    document.querySelector('.player-0-panel').classList.remove('winner');
-    document.querySelector('.player-1-panel').classList.remove('winner');
-    document.querySelector('.player-0-panel').classList.remove('active');
-    document.querySelector('.player-1-panel').classList.remove('active');
-    document.querySelector('.player-0-panel').classList.add('active');
+    document.getElementsByClassName('player-0-panel')[0].classList.remove('winner');
+    document.getElementsByClassName('player-1-panel')[0].classList.remove('winner');
+    document.getElementsByClassName('player-1-panel')[0].classList.remove('active');
+    document.getElementsByClassName('player-0-panel')[0].classList.add('active');
 
 
-    document.querySelector('.btn-flip').onclick = function() {
+    document.getElementsByClassName('btn-flip')[0].onclick = function() {
         const backCardNum = Math.floor(Math.random() * 13) + 1;
 
 
         // display result on back card
         const backCardDOM = document.getElementById('card-back-' + activePlayer);
         backCardDOM.style.display = 'block';
-        backCardDOM.src = 'card-' + backCardNum + '.jpg';
+        backCardDOM.src = `card-${backCardNum}.jpg`;
 
         if (backCardNum === 1) {
-            document.getElementById('one-' + activePlayer).onclick = function() {
+            document.getElementById('one-' + activePlayer).onclick = () => {
                 add = 1;
                 addRoundScore();
 
             // must disable all other functions
             };
-            document.getElementById('eleven-' + activePlayer).onclick = function() {
+            document.getElementById('eleven-' + activePlayer).onclick = () => {
                 add = 11;
                 addRoundScore();
-
 
             // must disable all other functions
             };
@@ -200,5 +158,3 @@ function addRoundScore () {
     roundScore += add;
     document.getElementById('current-' + activePlayer).textContent = roundScore;
 }
-
-
