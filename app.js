@@ -36,7 +36,7 @@ document.getElementsByClassName('btn-hit')[0].addEventListener('click', () => {
         // Display the result
         const cardDOM = document.getElementById('card-' + hitClicks);
         cardDOM.style.display = 'block';
-        cardDOM.src = `card-${cardNum}.jpg`;
+        cardDOM.src = `./cards/card-${cardNum}.jpg`;
         roundScore += cardNum;
         document.getElementById('current-' + activePlayer).textContent = roundScore;
 
@@ -44,7 +44,7 @@ document.getElementsByClassName('btn-hit')[0].addEventListener('click', () => {
     } else if (cardNum === 1) {
         const cardDOM = document.getElementById('card-' + hitClicks);
         cardDOM.style.display = 'block';
-        cardDOM.src = `card-${cardNum}.jpg`;
+        cardDOM.src = `./cards/card-${cardNum}.jpg`;
 
         document.getElementById('one-' + activePlayer).onclick = () => {
             add = 1;
@@ -63,7 +63,7 @@ document.getElementsByClassName('btn-hit')[0].addEventListener('click', () => {
 });
 
 
-document.getElementsByClassName('.btn-hold')[0].addEventListener('click', () => {
+document.getElementsByClassName('btn-hold')[0].addEventListener('click', () => {
     if (gamePlaying) {
         // check if the player won the game
         check();
@@ -72,7 +72,7 @@ document.getElementsByClassName('.btn-hold')[0].addEventListener('click', () => 
 });
 
 function querySelectorCards () {
-    const cards = document.getElementsByClassName('.card');
+    const cards = document.getElementsByClassName('card');
     for (let i = 0; i < cards.length; i++) {
         cards[i].style.display = 'none';
     }
@@ -128,7 +128,7 @@ function init () {
         // display result on back card
         const backCardDOM = document.getElementById('card-back-' + activePlayer);
         backCardDOM.style.display = 'block';
-        backCardDOM.src = `card-${backCardNum}.jpg`;
+        backCardDOM.src = `./cards/card-${backCardNum}.jpg`;
 
         if (backCardNum === 1) {
             document.getElementById('one-' + activePlayer).onclick = () => {
