@@ -106,7 +106,7 @@ function init () {
     activePlayer = 0;
     roundScore = 0;
     gamePlaying = true;
-
+	
     for (let i = 1; i < 11; i++) {
         document.getElementById('card-' + i).style.display = 'none';
     }
@@ -122,6 +122,7 @@ function init () {
 
 
     document.getElementsByClassName('btn-flip')[0].onclick = function() {
+		
         const backCardNum = Math.floor(Math.random() * 13) + 1;
 
 
@@ -151,6 +152,7 @@ function init () {
         // disableFlip();
         return backCardNum;
     };
+	
 }
 
 
