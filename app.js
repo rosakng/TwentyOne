@@ -48,7 +48,6 @@ document.getElementsByClassName('btn-hit')[0].addEventListener('click', () => {
         document.getElementById('one-' + activePlayer).onclick = () => {
             add = 1;
             addRoundScore();
-            // must disable all other functions
 
             check();
         };
@@ -147,6 +146,7 @@ function init () {
             document.getElementById('current-' + activePlayer).textContent = roundScore[activePlayer];
         }
         return backCardNum;
+        
     };
 	
 }
