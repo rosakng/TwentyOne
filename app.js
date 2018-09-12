@@ -6,18 +6,17 @@ scores = [0,0];
 roundScore = 0;
 activePlayer = 0; //change this to 0 or 1
 */
-
 init ();
 
-function disable (className) {
+function disable (className) { //not used yet
     document.getElementsByClassName(className)[0].disabled = true;
 }
 
 function check () {
-    if (roundScore > 20) {
-        document.getElementById('name-' + activePlayer).textContent = roundScore === 21 ? 'Winner!' : 'Loser!';
+    if (roundScore[activePlayer] > 20) {
+        document.getElementById('name-' + activePlayer).textContent = roundScore[activePlayer] === 21 ? 'Winner!' : 'Loser!';
         querySelectorCards();
-        document.getElementsByClassName(`player-${activePlayer}-panel`)[0].classList.add(roundScore === 21 ? 'winner' : 'loser');
+        document.getElementsByClassName(`player-${activePlayer}-panel`)[0].classList.add(roundScore[activePlayer] === 21 ? 'winner' : 'loser');
         document.getElementsByClassName(`player-${activePlayer}-panel`)[0].classList.remove('active');
         gamePlaying = false;
         return;
@@ -37,8 +36,8 @@ document.getElementsByClassName('btn-hit')[0].addEventListener('click', () => {
         const cardDOM = document.getElementById('card-' + hitClicks);
         cardDOM.style.display = 'block';
         cardDOM.src = `./cards/card-${cardNum}.jpg`;
-        roundScore += cardNum;
-        document.getElementById('current-' + activePlayer).textContent = roundScore;
+        roundScore[activePlayer] += cardNum;
+        document.getElementById('current-' + activePlayer).textContent = roundScore[activePlayer];
 
         check();
     } else if (cardNum === 1) {
@@ -81,9 +80,9 @@ function querySelectorCards () {
 function nextPlayer () {
     // next player
     // ternary operator
-    roundScore = 0;
+    //roundScore = 0
     activePlayer = activePlayer === 0 ? 1 : 0;
-    // roundScore = 0;
+    
 
     // document.getElementById('current-0').textContent = '0';
     // document.getElementById('current-1').textContent = '0';
@@ -104,7 +103,7 @@ document.getElementsByClassName('btn-new')[0].addEventListener('click', init);
 
 function init () {
     activePlayer = 0;
-    roundScore = 0;
+    roundScore = [0,0];
     gamePlaying = true;
 	
     for (let i = 1; i < 11; i++) {
@@ -125,7 +124,6 @@ function init () {
 		
         const backCardNum = Math.floor(Math.random() * 13) + 1;
 
-
         // display result on back card
         const backCardDOM = document.getElementById('card-back-' + activePlayer);
         backCardDOM.style.display = 'block';
@@ -145,11 +143,9 @@ function init () {
             // must disable all other functions
             };
         } else {
-            roundScore += backCardNum;
-            document.getElementById('current-' + activePlayer).textContent = roundScore;
+            roundScore[activePlayer] += backCardNum;
+            document.getElementById('current-' + activePlayer).textContent = roundScore[activePlayer];
         }
-
-        // disableFlip();
         return backCardNum;
     };
 	
@@ -157,6 +153,6 @@ function init () {
 
 
 function addRoundScore () {
-    roundScore += add;
-    document.getElementById('current-' + activePlayer).textContent = roundScore;
+    roundScore[activePlayer] += add;
+    document.getElementById('current-' + activePlayer).textContent = roundScore[activePlayer];
 }
