@@ -156,3 +156,7 @@ function addRoundScore () {
     roundScore[activePlayer] += add;
     document.getElementById('current-' + activePlayer).textContent = roundScore[activePlayer];
 }
+
+//toDo:
+//allow flip once 
+//winner on the other side
