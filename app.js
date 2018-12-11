@@ -150,8 +150,6 @@ function init () {
     };
 	
 }
-
-
 function addRoundScore () {
     roundScore[activePlayer] += add;
     document.getElementById('current-' + activePlayer).textContent = roundScore[activePlayer];
@@ -160,3 +158,6 @@ function addRoundScore () {
 //toDo:
 //allow flip once 
 //winner on the other side
+//discontinue other functions when hit is supposed to be clicked or 1 or 11 is supposed to be clicked
+//put loser on the other side when one says winner
+//overall refactor :--)
